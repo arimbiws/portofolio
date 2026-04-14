@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-primary: #52050a;
+  --color-secondary: #8b0000;
+  --color-accent: #dc2626;
+
+  --font-sans: "Inter", sans-serif;
+  --font-courier: "Courier Prime", monospace;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}

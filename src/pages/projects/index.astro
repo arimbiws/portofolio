@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { projects } from "../../data/projects";
+import ProjectCard from "../../components/ProjectCard.astro";
+---
+
+<Layout title="All Projects | John Doe">
+  <main class="max-w-6xl mx-auto px-6 pt-10">
+    <div class="mb-12 reveal active text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900 dark:text-white">All Projects</h1>
+      <p class="text-lg text-slate-600 dark:text-slate-400">A collection of my recent work, side projects, and explorations.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </main>
+</Layout>
