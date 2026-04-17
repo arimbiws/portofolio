@@ -61,7 +61,7 @@ import myLogo from "../assets/logo.svg";
     const navLinks = document.querySelectorAll(".nav-link");
     const currentPath = window.location.pathname;
 
-    const setActiveClass = (activeLinkHref) => {
+    const setActiveClass = (activeLinkHref: string) => {
       navLinks.forEach((link) => {
         const href = link.getAttribute("href");
 

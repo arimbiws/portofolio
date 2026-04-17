@@ -1,6 +1,13 @@
-import imgSvara from "../assets/projects/svara/Homepage.png";
-import imgAJSmash from "../assets/projects/ajsmashburgers/homepage.png";
-import imgTaletrack from "../assets/projects/taletrack/screenshot-home.png";
+import homeSvara from "../assets/projects/svara/Homepage.png";
+import recSvara from "../assets/projects/svara/Recommendation.png";
+import paySvara from "../assets/projects/svara/Payment.png";
+import notifSvara from "../assets/projects/svara/Notification.png";
+import helpSvara from "../assets/projects/svara/Help.png";
+import homeAJ from "../assets/projects/ajsmashburgers/homepage.png";
+import adminAJ from "../assets/projects/ajsmashburgers/dashboard-admin.png";
+import homeTale from "../assets/projects/taletrack/screenshot-home.png";
+import expTale from "../assets/projects/taletrack/screenshot-explore.png";
+import shelfTale from "../assets/projects/taletrack/screenshot-shelves.png";
 
 export const projects = [
   {
@@ -11,7 +18,7 @@ export const projects = [
       "Telecommunication providers face a significant challenge in understanding diverse user behaviors. With thousands of product variants such as spanning data, voice, SMS, and streaming, all sorts of generic product offerings often miss the mark, leading to ineffective promotions, missed cross-selling opportunities, and a churn rate risk of up to 31%.",
       "This project aims to solve that problem by introducing an intelligent, data-driven recommendation system. Built using the Kaggle Telco Customer Churn dataset, the application segments customers based on their monthly charges and service usage patterns. It then matches these user segments with tailored dummy Telco packages.",
     ],
-    image: imgSvara,
+    images: [homeSvara, recSvara, paySvara, notifSvara, helpSvara],
     techStack: ["React", "Tailwind CSS", "Express.js", "MySQL", "Flask API", "Vercel", "Railway", "Multilayer Perceptron (MLP)", "Content-Based Filtering"],
     demoLink: "https://svara-asah.vercel.app/",
     githubLink: "https://github.com/Capstone-A25-CS022/svara-app",
@@ -25,7 +32,7 @@ export const projects = [
 
       "This application also includes a fully functional Content Management System (CMS). This feature is created for the restaurant owner to seamlessly update menu items, post new promotional banners, manage gallery images, and update company profile details easily without needing to touch a single line of code.   ",
     ],
-    image: imgAJSmash,
+    images: [homeAJ, adminAJ],
     techStack: ["Laravel", "Tailwind CSS", "JavaScript", "MySQL", "PHP", "Blade", "Swiper.js"],
     demoLink: "#",
     githubLink: "https://github.com/arimbiws/ajsmashburgers",
@@ -41,7 +48,7 @@ export const projects = [
 
       "From a technical perspective, TaleTrack is engineered for performance, security, and accessibility. It utilizes Next.js with the App Router for server-side rendering and optimized routing. The database architecture is powered by Supabase (PostgreSQL) and managed through Prisma ORM for database queries. For security, the app implements Auth.js (NextAuth v5) to handle both Google OAuth and Credentials login, paired with Nodemailer for secure password reset flows. Additionally, TaleTrack is configured as a Progressive Web App (PWA), ensuring core functionalities remain accessible even without an active internet connection.",
     ],
-    image: imgTaletrack,
+    images: [homeTale, expTale, shelfTale],
     techStack: ["Next.js", "Tailwind CSS", "Prisma ORM", "Supabase", "Google Books API", "PWA (Progressive Web App)", "Auth.js", "Nodemailer", "PostgreSQL", "TypeScript"],
     demoLink: "https://tale-track.vercel.app/",
     githubLink: "https://github.com/arimbiws/tale-track",
