@@ -32,22 +32,50 @@ const { project } = Astro.props;
       {project.techStack.map((tech) => <span class="text-sm font-mono bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700">{tech}</span>)}
     </div>
 
-    <div class="rounded-2xl overflow-hidden mb-12 shadow-xl border border-slate-200 dark:border-slate-800">
-      <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 hide-scrollbar">
+    <div class="relative group mb-12">
+      {
+        project.images && project.images.length > 1 && (
+          <button
+            id="prev-img-btn"
+            class="absolute left-5 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-slate-800/40 hover:bg-primary dark:hover:bg-secondary/80 text-slate-800 dark:text-white hover:text-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer"
+            aria-label="Previous Image"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+        )
+      }
+
+      <div id="carousel-container" class="flex overflow-x-auto snap-x snap-mandatory gap-2 hide-scrollbar scroll-smooth rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800">
         {
           project.images
             ? project.images.map((img, index) => (
-                <div class="shrink-0 w-full sm:w-[80%] snap-center rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800">
+                <div class="shrink-0 w-full sm:w-[75%] snap-center overflow-hidden">
                   <Image transition:name={index === 0 ? `img-${project.slug}` : undefined} src={img} alt={`${project.title} screenshot ${index + 1}`} class="w-full h-[300px] md:h-[500px] object-cover" />
                 </div>
               ))
             : project.images && (
-                <div class="w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200 dark:border-slate-800">
+                <div class="w-full snap-center overflow-hidden">
                   <Image transition:name={`img-${project.slug}`} src={project.images} alt={project.title} class="w-full object-contain max-h-[500px]" />
                 </div>
               )
         }
       </div>
+
+      {
+        project.images && project.images.length > 1 && (
+          <button
+            id="next-img-btn"
+            class="absolute right-5 top-1/2 -translate-y-1/2 z-10 bg-white/90 dark:bg-slate-800/40 hover:bg-primary dark:hover:bg-secondary/80 text-slate-800 dark:text-white hover:text-white p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-auto cursor-pointer"
+            aria-label="Next Image"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        )
+      }
     </div>
 
     <article class="prose prose-lg prose-slate dark:prose-invert max-w-none mb-12">
@@ -85,5 +113,25 @@ const { project } = Astro.props;
         )
       }
     </div>
+
+    <script>
+      document.addEventListener("astro:page-load", () => {
+        const carousel = document.getElementById("carousel-container");
+        const prevBtn = document.getElementById("prev-img-btn");
+        const nextBtn = document.getElementById("next-img-btn");
+
+        if (carousel && prevBtn && nextBtn) {
+          const scrollAmount = carousel.clientWidth * 0.75 + 16; // 80% width + gap 1rem (16px)
+
+          prevBtn.addEventListener("click", () => {
+            carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+          });
+
+          nextBtn.addEventListener("click", () => {
+            carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+          });
+        }
+      });
+    </script>
   </main>
 </Layout>
